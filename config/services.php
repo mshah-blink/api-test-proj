@@ -31,4 +31,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'blink' => [
+        'server' => env('BLINK_SERVER'),
+        'api_key' => env('BLINK_API_KEY'),
+        'secret_key' => env('BLINK_SECRET_KEY'),
+        'return_url' => env('BLINK_RETURN_URL'),
+        'notification_url' => env('BLINK_NOTIFICATION_URL'),
+    ],
+
 ];
