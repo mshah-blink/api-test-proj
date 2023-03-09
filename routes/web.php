@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProcessController;
+use App\Http\Controllers\ReturnController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PaymentController::class, 'index']);
+
+Route::get('/payment', [PaymentController::class, 'index']);
+Route::post('/process', [ProcessController::class, 'store']);
+
+Route::get('/return', [ReturnController::class, 'store']);
+
+Route::post('/notification', [NotificationController::class, 'store']);
