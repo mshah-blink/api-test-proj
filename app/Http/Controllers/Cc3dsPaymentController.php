@@ -16,9 +16,11 @@ class Cc3dsPaymentController extends Controller
         Session::put('access_token', $token['access_token']);
 
         return view('payment', [
-            'ccElement' => $element['element']['ccElement'],
+            'element' => $element['element']['ccElement'],
             'rawAmount' => $element['raw_amount'],
-            'transactionUnique' => $element['transaction_unique']
+            'transactionUnique' => $element['transaction_unique'],
+            'type' => 1,
+            'method' => 'cc'
         ]);
     }
 }

@@ -37,5 +37,41 @@ class Payment {
             'payment_intent' => $intent,
         ]);
     }
+
+    public static function getPayload(Request $request) {
+        if($request->method == 'cc') {
+            $result = [
+                'payment_intent' => $request->payment_intent,
+                'paymentToken' => $request->paymentToken,
+                'type' => $request->type,
+                'raw_amount' => $request->raw_amount,
+                'customer_email' => $request->customer_email,
+                'customer_name' => $request->customer_name,
+                'transaction_unique' => $request->transaction_unique,
+            ];
+        } elseif($request->method == 'ob') {
+            $result = [
+                'merchant_id' => $request->merchant_id,
+                'payment_intent' => $request->payment_intent,
+                'user_name' => $request->user_name,
+                'user_email' => $request->user_email,
+            ];
+        } elseif($request->method == 'dd') {
+            $result = [
+                'payment_intent' => $request->payment_intent,
+                'given_name' => $request->given_name,
+                'family_name' => $request->family_name,
+                'company_name' => $request->company_name,
+                'email' => $request->email,
+                'account_holder_name' => $request->account_holder_name,
+                'branch_code' => $request->branch_code,
+                'account_number' => $request->account_number,
+                'iban' => $request->iban,
+            ];
+        } else {
+            echo 'Invalid payment method';
+        }
+        return $result;
+    }
  
 }

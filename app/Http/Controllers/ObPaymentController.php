@@ -16,9 +16,10 @@ class ObPaymentController extends Controller
         Session::put('access_token', $token['access_token']);
 
         return view('payment', [
-            'ccElement' => $element['element']['ccElement'],
+            'element' => $element['element']['obElement'],
             'rawAmount' => $element['raw_amount'],
-            'transactionUnique' => $element['transaction_unique']
+            'transactionUnique' => $element['transaction_unique'],
+            'method' => 'ob'
         ]);
     }
 }

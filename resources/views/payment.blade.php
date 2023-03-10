@@ -836,9 +836,13 @@
 
         <form method="POST" action="process" id="test">
             @csrf
-            {!! $ccElement !!}
+            {!! $element !!}
             <input type="hidden" id="raw_amount" name="raw_amount" value="{{ $rawAmount }}" />
             <input type="hidden" id="transaction_unique" name="transaction_unique" value="{{ $transactionUnique }}" />
+            @isset($type)
+                <input type="hidden" id="type" name="type" value="{{ $type }}" />
+            @endisset
+            <input type="hidden" id="method" name="method" value="{{ $method }}" />
             <button type="submit">Submit</button>
         </form>
     </div>
