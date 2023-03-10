@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Cc3dsPaymentController;
+use App\Http\Controllers\CcPaymentController;
+use App\Http\Controllers\ObPaymentController;
+use App\Http\Controllers\DdPaymentController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ReturnController;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +20,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PaymentController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/payment', [PaymentController::class, 'index']);
+Route::get('/cc_payment', [CcPaymentController::class, 'index']);
+Route::get('/cc_3ds_payment', [Cc3dsPaymentController::class, 'index']);
+Route::get('/ob_payment', [ObPaymentController::class, 'index']);
+Route::get('/dd_payment', [DdPaymentController::class, 'index']);
+
 Route::post('/process', [ProcessController::class, 'store']);
 
 Route::get('/return', [ReturnController::class, 'store']);

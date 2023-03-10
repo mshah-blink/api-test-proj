@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Services\Payment;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 
-class PaymentController extends Controller
+class CcPaymentController extends Controller
 {
     public function index()
     {
