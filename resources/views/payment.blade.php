@@ -15,6 +15,7 @@
 <body class="antialiased">
     <form method="POST" action="process" id="test">
         @csrf
+
         {!! $element !!}
         <input type="hidden" id="raw_amount" name="raw_amount" value="{{ $rawAmount }}" />
         <input type="hidden" id="transaction_unique" name="transaction_unique" value="{{ $transactionUnique }}" />

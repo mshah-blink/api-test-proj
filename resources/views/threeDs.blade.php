@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>3DS</title>
+    <script>
+        onload = () => document.forms[0].submit();
+    </script>
 </head>
 
 <body class="antialiased">
