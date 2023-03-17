@@ -48,18 +48,49 @@ class Payment
         );
     }
 
+
+    public static function getTransaction($token, $transaction_id)
+    {
+        // dd([config('blink.server'), '/transaction/', $transaction_id]);
+        return Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . $token,
+        ])->get(
+            config('blink.server') . '/transaction/' . $transaction_id
+        );
+    }
+
     public static function getPayload(Request $request)
     {
         if ($request->method == 'cc') {
-            $result = [
-                'payment_intent' => $request->payment_intent,
-                'paymentToken' => $request->paymentToken,
-                'type' => $request->type,
-                'raw_amount' => $request->raw_amount,
-                'customer_email' => $request->customer_email,
-                'customer_name' => $request->customer_name,
-                'transaction_unique' => $request->transaction_unique,
-            ];
+            if ($request->type == 1) {
+                $result = [
+                    'payment_intent' => $request->payment_intent,
+                    'paymentToken' => $request->paymentToken,
+                    'type' => $request->type,
+                    'raw_amount' => $request->raw_amount,
+                    'customer_email' => $request->customer_email,
+                    'customer_name' => $request->customer_name,
+                    'transaction_unique' => $request->transaction_unique,
+                    'device_timezone' => $request->device_timezone,
+                    'device_capabilities' => $request->device_capabilities,
+                    'device_accept_language' => $request->device_accept_language,
+                    'device_screen_resolution' => $request->device_screen_resolution,
+                    'remote_address' => $request->remote_address,
+                ];
+            } elseif ($request->type == 2) {
+                $result = [
+                    'payment_intent' => $request->payment_intent,
+                    'paymentToken' => $request->paymentToken,
+                    'type' => $request->type,
+                    'raw_amount' => $request->raw_amount,
+                    'customer_email' => $request->customer_email,
+                    'customer_name' => $request->customer_name,
+                    'transaction_unique' => $request->transaction_unique,
+                ];
+            } else {
+                echo 'Invalid credit card type';
+            }
         } elseif ($request->method == 'ob') {
             $result = [
                 'merchant_id' => $request->merchant_id,

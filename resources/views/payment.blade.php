@@ -20,7 +20,15 @@
         <input type="hidden" id="transaction_unique" name="transaction_unique" value="{{ $transactionUnique }}" />
         @isset($type)
             <input type="hidden" id="type" name="type" value="{{ $type }}" />
+            @if ($type == 1)
+                <input type="hidden" id="device_timezone" name="device_timezone" value="0" />
+                <input type="hidden" id="device_capabilities" name="device_capabilities" value="javascript" />
+                <input type="hidden" id="device_accept_language" name="device_accept_language" value="en-GB" />
+                <input type="hidden" id="device_screen_resolution" name="device_screen_resolution" value="1366x768x24" />
+                <input type="hidden" id="remote_address" name="remote_address" value="120.123.145.178" />
+            @endif
         @endisset
+
         <input type="hidden" id="method" name="method" value="{{ $method }}" />
         <br />
         <button type="submit">Submit</button>
