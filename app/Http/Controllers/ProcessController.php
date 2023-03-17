@@ -28,10 +28,8 @@ class ProcessController extends Controller
             } else {
                 return 'ACS form not found. Please start again.';
             }
-        } elseif ($request->type == 2) {
-            return redirect()->away($response['url'] ?? $response['redirect_url']);
         } else {
-            return "Invalid type";
+            return redirect()->away($response['url'] ?? $response['redirect_url']);
         }
 
         // dd($response->body());
