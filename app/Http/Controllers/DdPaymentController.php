@@ -19,7 +19,7 @@ class DdPaymentController extends Controller
             'element' => $element['element']['ddElement'],
             'rawAmount' => $element['raw_amount'],
             'transactionUnique' => $element['transaction_unique'],
-            'method' => 'dd'
+            'method' => 'directdebits'
         ]);
     }
 }

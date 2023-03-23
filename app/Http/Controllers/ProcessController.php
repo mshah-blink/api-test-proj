@@ -20,7 +20,7 @@ class ProcessController extends Controller
             'Accept-Encoding' => $request->header('accept-encoding'),
             'User-Agent' => $request->header('user-agent'),
 
-        ])->post(config('blink.server') . '/' . $request->method . '/process', Payment::getPayload($request));
+        ])->post(config('blink.server') . '/' . $request->method, Payment::getPayload($request));
 
         if ($request->type == 1) {
             if (isset($response['acsform'])) {
@@ -31,12 +31,5 @@ class ProcessController extends Controller
         } else {
             return redirect()->away($response['url'] ?? $response['redirect_url']);
         }
-
-        // dd($response->body());
-        // $a = explode("res=", $response['url']);
-        // echo base64_decode($a[1]);
-        // $transaction_id = base64_decode($a[1]);
-        // $return = Payment::getTransaction(Session::get('access_token'), $a[1]);
-        // dd($return->body());
     }
 }

@@ -10,7 +10,7 @@ class Payment
     public static function getToken()
     {
         return Http::post(
-            config('blink.server') . '/token',
+            config('blink.server') . '/tokens',
             [
                 'api_key' => config('blink.api_key'),
                 'secret_key' => config('blink.secret_key'),
@@ -24,7 +24,7 @@ class Payment
             'Content-Type' => 'application/json',
             'Authorization' => 'Bearer ' . $token,
         ])->post(
-            config('blink.server') . '/intent',
+            config('blink.server') . '/intents',
             [
                 'amount' => 1.01,
                 'payment_type' => 'credit-card',
@@ -41,28 +41,26 @@ class Payment
             'Content-Type' => 'application/json',
             'Authorization' => 'Bearer ' . $token,
         ])->post(
-            config('blink.server') . '/element',
+            config('blink.server') . '/elements',
             [
                 'payment_intent' => $intent,
             ]
         );
     }
 
-
     public static function getTransaction($token, $transaction_id)
     {
-        // dd([config('blink.server'), '/transaction/', $transaction_id]);
         return Http::withHeaders([
             'Content-Type' => 'application/json',
             'Authorization' => 'Bearer ' . $token,
         ])->get(
-            config('blink.server') . '/transaction/' . $transaction_id
+            config('blink.server') . '/transactions/' . $transaction_id
         );
     }
 
     public static function getPayload(Request $request)
     {
-        if ($request->method == 'cc') {
+        if ($request->method == 'creditcards') {
             if ($request->type == 1) {
                 $result = [
                     'payment_intent' => $request->payment_intent,
@@ -91,14 +89,14 @@ class Payment
             } else {
                 echo 'Invalid credit card type';
             }
-        } elseif ($request->method == 'ob') {
+        } elseif ($request->method == 'openbankings') {
             $result = [
                 'merchant_id' => $request->merchant_id,
                 'payment_intent' => $request->payment_intent,
                 'user_name' => $request->user_name,
                 'user_email' => $request->user_email,
             ];
-        } elseif ($request->method == 'dd') {
+        } elseif ($request->method == 'directdebits') {
             $result = [
                 'payment_intent' => $request->payment_intent,
                 'given_name' => $request->given_name,

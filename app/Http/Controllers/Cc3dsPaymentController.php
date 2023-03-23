@@ -20,7 +20,7 @@ class Cc3dsPaymentController extends Controller
             'rawAmount' => $element['raw_amount'],
             'transactionUnique' => $element['transaction_unique'],
             'type' => 1,
-            'method' => 'cc'
+            'method' => 'creditcards'
         ]);
     }
 }
