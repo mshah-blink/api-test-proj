@@ -11,14 +11,13 @@ class Cc3dsPaymentController extends Controller
     {
         $token = Payment::getToken();
         $intent = Payment::getIntent($token['access_token']);
-        $element = Payment::getElement($token['access_token'], $intent['payment_intent']);
 
         Session::put('access_token', $token['access_token']);
 
         return view('payment', [
-            'element' => $element['element']['ccElement'],
-            'rawAmount' => $element['raw_amount'],
-            'transactionUnique' => $element['transaction_unique'],
+            'element' => $intent['element']['ccElement'],
+            'rawAmount' => $intent['amount'],
+            'transactionUnique' => $intent['transaction_unique'],
             'type' => 1,
             'method' => 'creditcards'
         ]);
