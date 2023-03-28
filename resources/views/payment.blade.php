@@ -17,8 +17,7 @@
         @csrf
 
         {!! $element !!}
-        <input type="hidden" id="raw_amount" name="raw_amount" value="{{ $rawAmount }}" />
-        <input type="hidden" id="transaction_unique" name="transaction_unique" value="{{ $transactionUnique }}" />
+
         @isset($type)
             <input type="hidden" id="type" name="type" value="{{ $type }}" />
             @if ($type == 1)
@@ -30,7 +29,7 @@
             @endif
         @endisset
 
-        <input type="hidden" id="method" name="method" value="{{ $method }}" />
+        <input type="hidden" id="merchant_data" name="merchant_data" value="{\"order_id\": \"12345\"}" />
         <br />
         <button type="submit">Submit</button>
     </form>

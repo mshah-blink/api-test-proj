@@ -16,10 +16,7 @@ class CcPaymentController extends Controller
 
         return view('payment', [
             'element' => $intent['element']['ccElement'],
-            'rawAmount' => $intent['amount'],
-            'transactionUnique' => $intent['transaction_unique'],
-            'type' => 2,
-            'method' => 'creditcards'
+            'type' => 2
         ]);
     }
 }

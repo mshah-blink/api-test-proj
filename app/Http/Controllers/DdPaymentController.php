@@ -15,10 +15,7 @@ class DdPaymentController extends Controller
         Session::put('access_token', $token['access_token']);
 
         return view('payment', [
-            'element' => $intent['element']['ddElement'],
-            'rawAmount' => $intent['amount'],
-            'transactionUnique' => $intent['transaction_unique'],
-            'method' => 'directdebits'
+            'element' => $intent['element']['ddElement']
         ]);
     }
 }

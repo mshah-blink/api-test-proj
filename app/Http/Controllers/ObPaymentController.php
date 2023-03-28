@@ -15,10 +15,7 @@ class ObPaymentController extends Controller
         Session::put('access_token', $token['access_token']);
 
         return view('payment', [
-            'element' => $intent['element']['obElement'],
-            'rawAmount' => $intent['amount'],
-            'transactionUnique' => $intent['transaction_unique'],
-            'method' => 'openbankings'
+            'element' => $intent['element']['obElement']
         ]);
     }
 }
