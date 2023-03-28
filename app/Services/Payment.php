@@ -60,7 +60,7 @@ class Payment
 
     public static function getPayload(Request $request)
     {
-        if ($request->method == 'creditcards') {
+        if ($request->resource == 'creditcards') {
             if ($request->type == 1) {
                 $result = [
                     'payment_intent' => $request->payment_intent,
@@ -89,14 +89,14 @@ class Payment
             } else {
                 echo 'Invalid credit card type';
             }
-        } elseif ($request->method == 'openbankings') {
+        } elseif ($request->resource == 'openbankings') {
             $result = [
                 'merchant_id' => $request->merchant_id,
                 'payment_intent' => $request->payment_intent,
                 'user_name' => $request->user_name,
                 'user_email' => $request->user_email,
             ];
-        } elseif ($request->method == 'directdebits') {
+        } elseif ($request->resource == 'directdebits') {
             $result = [
                 'payment_intent' => $request->payment_intent,
                 'given_name' => $request->given_name,

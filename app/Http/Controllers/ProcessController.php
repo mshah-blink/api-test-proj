@@ -20,7 +20,7 @@ class ProcessController extends Controller
             'Accept-Encoding' => $request->header('accept-encoding'),
             'User-Agent' => $request->header('user-agent'),
 
-        ])->post(config('blink.server') . '/' . $request->method, Payment::getPayload($request));
+        ])->post(config('blink.server') . '/' . $request->resource, Payment::getPayload($request));
 
         if ($request->type == 1) {
             if (isset($response['acsform'])) {
