@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Payment;
 use Illuminate\Support\Facades\Session;
 
-class CcPaymentController extends Controller
+class CcMotoPaymentController extends Controller
 {
     public function index()
     {
@@ -15,8 +15,7 @@ class CcPaymentController extends Controller
         Session::put('access_token', $token['access_token']);
 
         return view('payment', [
-            'element' => $intent['element']['ccElement'],
-            'type' => 2
+            'element' => $intent['element']['ccMotoElement'],
         ]);
     }
 }

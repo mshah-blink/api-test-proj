@@ -10,8 +10,8 @@
 
 <body class="antialiased">
     <ul class="mt-4">
-        <li><a href="{{ url('/cc_payment') }}">CC</a></li>
-        <li><a href="{{ url('/cc_3ds_payment') }}">CC (3DS)</a></li>
+        <li><a href="{{ url('/cc_ecom_payment') }}">CC (ECOM)</a></li>
+        <li><a href="{{ url('/cc_moto_payment') }}">CC (MOTO)</a></li>
         <li><a href="{{ url('/ob_payment') }}">OB</a></li>
         <li><a href="{{ url('/dd_payment') }}">DD</a></li>
     </ul>

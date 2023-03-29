@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Payment;
 use Illuminate\Support\Facades\Session;
 
-class Cc3dsPaymentController extends Controller
+class CcEcomPaymentController extends Controller
 {
     public function index()
     {
@@ -16,7 +16,6 @@ class Cc3dsPaymentController extends Controller
 
         return view('payment', [
             'element' => $intent['element']['ccElement'],
-            'type' => 1
         ]);
     }
 }
