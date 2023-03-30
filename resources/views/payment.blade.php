@@ -15,7 +15,6 @@
         @csrf
         {!! $element !!}
         <input type="hidden" id="merchant_data" name="merchant_data" value="{\"order_id\": \"12345\"}" />
-        <br />
         <button type="submit">Submit</button>
     </form>
 </body>
