@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://gateway2.blinkpayment.co.uk/sdk/web/v1/js/hostedfields.min.js"></script>
     <script src="https://api-demo-php.blinkpayment.co.uk/assets/js/blink-host.js"></script>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 
 <body class="antialiased">
